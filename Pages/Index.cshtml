@@ -1,0 +1,26 @@
+﻿@page 
+@model HelloApp.IndexModel
+@{
+    Layout = "_MasterLayout.cshtml";
+    var srcTerm = Request.Query["q"];
+}
+
+<h2>Min To Do liste</h2>
+
+    @if(srcTerm != ""){
+        <ol>
+    @foreach(var item in Model.ToDoList){
+        if(srcTerm == item){
+            <li>@(item)</li>
+        }
+    }
+</ol>
+}
+
+    @if(String.IsNullOrEmpty(srcTerm)){
+<ol>
+    @foreach(var item in Model.ToDoList){
+            <li>@(item)</li>
+    }
+</ol>
+}
